@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { PaisService } from 'src/app/services/pais/pais.service';
 import { ActorService } from 'src/app/services/actor/actor.service';
+import { MensajesService } from 'src/app/services/mensajes/mensajes.service';
 import { Pais } from '../../clases/pais/pais';
 import { Actor } from '../../clases/actor/actor';
 
@@ -18,7 +18,7 @@ export class AltaActoresComponent implements OnInit {
   paisSeleccionado!: Pais;
   public forma: FormGroup;
 
-  constructor(private _Pservice: PaisService, private fb: FormBuilder, private _Aservice: ActorService, private router: Router,) {
+  constructor(private _Pservice: PaisService, private fb: FormBuilder, private _Aservice: ActorService, private router: Router, private _Mservice: MensajesService)  {
     this.listadoPaises = [];
   }
 
@@ -83,53 +83,14 @@ export class AltaActoresComponent implements OnInit {
     const queDevolvio = this._Aservice.altaActor(nuevoActor);
     queDevolvio.then(ok => {
       if (ok.path) {
-        this.mensajeDeAltaExitoso();
+        this._Mservice.mensajeExitoso('Actor dado de alta correctamente!');
         this.router.navigateByUrl("/Bienvenido");
       }
       else {
-        this.mensajeDeAltaError();
+        this._Mservice.mensajeError('Lo sentimos mucho ocurrio un error!');
         console.log("no ok");
       }
     });
-  }
-
-
-  mensajeDeAltaExitoso() {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-
-    Toast.fire({
-      icon: 'success',
-      title: 'Actor dado de alta correctamente!'
-    })
-  }
-
-  mensajeDeAltaError() {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-
-    Toast.fire({
-      icon: 'error',
-      title: 'Lo sentimos mucho ocurrio un error!'
-    })
   }
 
   prueba() {

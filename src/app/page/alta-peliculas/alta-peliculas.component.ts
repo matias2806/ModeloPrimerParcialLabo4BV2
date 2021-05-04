@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { ActorService } from 'src/app/services/actor/actor.service';
 import { PeliculasService } from 'src/app/services/peliculas/peliculas.service';
+import { MensajesService } from 'src/app/services/mensajes/mensajes.service';
 import { Actor } from '../../clases/actor/actor';
 import { Pais } from '../../clases/pais/pais';
 import { Pelicula } from '../../clases/pelicula/pelicula';
@@ -20,7 +20,7 @@ export class AltaPeliculasComponent implements OnInit {
   public forma: FormGroup;
   private imagen: any;
 
-  constructor(private _Aservice: ActorService, private _PeliService: PeliculasService, private fb: FormBuilder, private router: Router,) { }
+  constructor(private _Aservice: ActorService, private _PeliService: PeliculasService, private fb: FormBuilder, private router: Router, private _Mservice: MensajesService) { }
 
   ngOnInit(): void {
     this._Aservice.traerTodos().subscribe((actores: Actor[]) => {
@@ -84,46 +84,8 @@ export class AltaPeliculasComponent implements OnInit {
     console.log(nuevaPelicula);
 
     this._PeliService.subirImagen(this.imagen, nuevaPelicula);
-    this.mensajeDeAltaExitoso();
+    this._Mservice.mensajeExitoso('Pelicula dada de alta correctamente!');
     this.router.navigateByUrl("/Bienvenido");
-  }
-
-  mensajeDeAltaExitoso() {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-
-    Toast.fire({
-      icon: 'success',
-      title: 'Pelicula dada de alta correctamente!'
-    })
-  }
-
-  mensajeDeAltaError() {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-
-    Toast.fire({
-      icon: 'error',
-      title: 'Lo sentimos mucho ocurrio un error!'
-    })
   }
 
 }
