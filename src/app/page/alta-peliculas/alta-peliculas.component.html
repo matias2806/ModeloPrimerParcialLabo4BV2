@@ -17,22 +17,22 @@
                     <div class="row g-3">
                         <div class="col-sm-12">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <input type="text" class="form-control" id="nombre" formControlName="nombre">
                         </div>
 
                         <div class="col-sm-12">
                             <label for="estreno" class="form-label">Fecha de estreno</label>
-                            <input type="date" class="form-control" id="estreno">
+                            <input type="date" class="form-control" id="estreno" formControlName="fecha">
                         </div>
 
                         <div class="col-sm-12">
                             <label for="foto" class="form-label">Foto de pelicula</label>
-                            <input type="file" class="form-control" id="foto">
+                            <input type="file" class="form-control" id="foto" formControlName="foto" (change)="nuevaImagen($event)">
                         </div>
 
                         <div class="col-md-12 mb-4">
                             <label for="tipo" class="form-label">Tipo de pelicula</label>
-                            <select class="form-select" id="tipo" required>
+                            <select class="form-select" id="tipo" required formControlName="tipo">
                                 <option value="e">Elejir tipo...</option>
                                 <option value="terror">Terror</option>
                                 <option value="comedia">Comedia</option>
@@ -45,24 +45,25 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="nombreActor">Nombre</label>
-                                <input name="nombreActor" type="text" class="form-control" id="nombreActor" value={{actorSeleccionado?.nombre}} disabled>
+                                <input name="nombreActor" type="text" class="form-control" id="nombreActor" formControlName="nombreActor" value={{actorSeleccionado?.nombre}} disabled>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="apellidoActor">Apellido</label>
-                                <input name="apellidoActor" type="text" class="form-control" id="apellidoActor" value={{actorSeleccionado?.apellido}} disabled>
+                                <input name="apellidoActor" type="text" class="form-control" id="apellidoActor" formControlName="apellidoActor" value={{actorSeleccionado?.apellido}} disabled>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="emailActor">Email</label>
-                                <input name="emailActor" type="text" class="form-control" id="emailActor" value={{actorSeleccionado?.email}} disabled>
+                                <input name="emailActor" type="text" class="form-control" id="emailActor" formControlName="emailActor" value={{actorSeleccionado?.email}} disabled>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="paisActor">Pais</label>
-                                <input name="paisActor" type="text" class="form-control" id="paisActor" value={{actorSeleccionado?.pais}} disabled>
+                                <input name="paisActor" type="text" class="form-control" id="paisActor" formControlName="paisActor" value={{actorSeleccionado?.pais}} disabled>
                             </div>
                         </div>
                     </div>
 
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Alta de pelicula</button>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="forma.invalid || !actorSeleccionado">Alta de pelicula</button>
+                    <!-- <button class="w-100 btn btn-primary btn-lg" type="submit">Alta de pelicula</button> -->
                 </form>
 
             </div>

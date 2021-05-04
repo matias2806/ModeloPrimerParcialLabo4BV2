@@ -84,7 +84,7 @@ export class AltaActoresComponent implements OnInit {
     queDevolvio.then(ok => {
       if (ok.path) {
         this.mensajeDeAltaExitoso();
-        this.router.navigateByUrl("/Bienvenido")
+        this.router.navigateByUrl("/Bienvenido");
       }
       else {
         this.mensajeDeAltaError();
