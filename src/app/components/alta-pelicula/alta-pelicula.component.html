@@ -1,0 +1,9 @@
+
+<div class="container" *ngIf = peliculaNueva>
+    <input type="text" [(ngModel)]="peliculaNueva.nombre">
+    <p>{{peliculaNueva.nombre}}</p>
+    <button class="btn btn-danger" (click)="guardarNuevaPelicula()">Crear</button>
+</div>
+<div *ngIf = !peliculaNueva>
+    <button class="btn btn-warning" (click)="hacerNuevaPelicula()">Nueva Pelicula</button>
+</div>

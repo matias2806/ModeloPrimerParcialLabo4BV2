@@ -1,0 +1,78 @@
+<app-nav-bar></app-nav-bar>
+<br><br>
+
+<div class="container mt-5">
+    <main>
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+                <app-tabla-paises [listadoPaises]='listadoPaises'
+                    (eventoPaisSeleccionado)="cargarPaisSeleccionado($event)"></app-tabla-paises>
+            </div>
+
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Alta Actores</h4>
+                <form [formGroup]="forma" class="needs-validation" (ngSubmit)="altaActor()">
+                    <div class="row g-3">
+                        <div class="col-sm-12">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder=""
+                                formControlName="nombre">
+                            <small class="invalido"
+                                *ngIf="forma.get('nombre')?.errors?.required && forma.get('nombre')?.touched">(!)
+                                El nombre del actor es requerido</small>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" name="apellido" class="form-control" id="apellido" placeholder=""
+                                formControlName="apellido">
+                            <small class="invalido"
+                                *ngIf="forma.get('apellido')?.errors?.required && forma.get('apellido')?.touched">(!)
+                                El apellido del actor es requerido</small>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input type="text" name="telefono" class="form-control" id="telefono" placeholder=""
+                                formControlName="telefono">
+                            <small class="invalid"
+                                *ngIf="forma.get('telefono')?.errors?.required && forma.get('telefono')?.touched">(!)
+                                El telefono del actor es requerido</small>
+                            <small class="invalido"
+                                *ngIf="forma.get('telefono')?.errors?.min || forma.get('telefono')?.errors?.max && forma.get('telefono')?.touched">(!)
+                                El telefono es incorrecto</small>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="email"
+                                placeholder="you@example.com" formControlName="email">
+                            <small class="invalido"
+                                *ngIf="forma.get('email')?.errors?.required && forma.get('email')?.touched">El email
+                                del actor es requerido</small>
+                            <small class="invalido"
+                                *ngIf="forma.get('email')?.errors?.email && forma.get('email')?.touched">El
+                                formato del email no es valido</small>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="nacionalidad">Nombre del pais</label>
+                            <input name="nacionalidad" name="nacionalidad" for="nacionalidad" class="form-control"
+                                formControlName="nacionalidad" value={{paisSeleccionado?.name}}>
+                            <small class="invalido" *ngIf="forma.get('nacionalidad')?.errors?.nacionalidad">(!) El
+                                pais del actor es requerido</small>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit"
+                            [disabled]="forma.invalid || !paisSeleccionado">Alta de
+                            Actor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2021 Matias Ezequiel Palmieri</p>
+    </footer>
+</div>

@@ -1,0 +1,13 @@
+<app-nav-bar></app-nav-bar>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h2>Tabla pelis components</h2>
+    <ul>
+      <li *ngFor="let pelicula of listadoPeliculas">
+        <span>{{ pelicula.nombre }}</span>
+        &nbsp;&nbsp;<button class="btn btn-primary" (click)="SeleccionPelicula(pelicula)">Ver Pelicula</button>
+      </li>
+    </ul>
+  </div>
+</div>
