@@ -1,1 +1,9 @@
-<p>listado-peliculas works!</p>
+<div *ngIf="enCualesParticipo()">
+    <div class="card centrado" style="width: 18rem;" *ngFor="let peli of peliculasEnLasQueParticipo">
+        <div class="card-body">
+          <h5 class="card-title">{{peli.nombre}}</h5>
+          <p class="card-text">{{peli.fechaEstreno}}</p>
+          <img src="{{peli.URLfoto}}" class="tamanio" alt="">
+        </div>
+      </div>
+</div>
