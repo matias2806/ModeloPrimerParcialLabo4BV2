@@ -1,3 +1,5 @@
+import { Actor } from '../actor/actor';
+
 export class Pelicula {
     id?:number;
     nombre:string;
@@ -6,9 +8,5 @@ export class Pelicula {
     cantidadDePublico:string;
     foto:string;
     URLfoto?:string;
-    nombreActor?:string;
-    apellidoActor?:string;
-    emailActor?:string;
-    paisActor?:string;
-    telefonoActor?:string;
+    actores?:Array<Actor>;
 }

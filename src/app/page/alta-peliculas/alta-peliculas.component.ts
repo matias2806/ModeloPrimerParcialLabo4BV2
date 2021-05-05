@@ -4,7 +4,6 @@ import { ActorService } from 'src/app/services/actor/actor.service';
 import { PeliculasService } from 'src/app/services/peliculas/peliculas.service';
 import { MensajesService } from 'src/app/services/mensajes/mensajes.service';
 import { Actor } from '../../clases/actor/actor';
-import { Pais } from '../../clases/pais/pais';
 import { Pelicula } from '../../clases/pelicula/pelicula';
 import { Router } from '@angular/router';
 
@@ -14,13 +13,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./alta-peliculas.component.css']
 })
 export class AltaPeliculasComponent implements OnInit {
-
+  //listaCompleta
   listadoActores!: Actor[];
-  actorSeleccionado!: Actor;
+  //actor
+  listaActoresSeleccionados: Array<Actor> = new Array<Actor>();
+  public banderaActorSeleccionado = true;
+  //peli
+  public peliculaFuturaAlta: Pelicula = new Pelicula();
+  //form
   public forma: FormGroup;
+  //foto
   private imagen: any;
 
-  constructor(private _Aservice: ActorService, private _PeliService: PeliculasService, private fb: FormBuilder, private router: Router, private _Mservice: MensajesService) { }
+  constructor(private _Aservice: ActorService, private _PeliService: PeliculasService, private fb: FormBuilder, private router: Router, private _Mservice: MensajesService) {
+
+  }
 
   ngOnInit(): void {
     this._Aservice.traerTodos().subscribe((actores: Actor[]) => {
@@ -32,33 +39,33 @@ export class AltaPeliculasComponent implements OnInit {
       'nombre': ['', [Validators.required]],
       'fecha': ['', Validators.required],
       'foto': ['', Validators.required],
-      'tipo': ['', Validators.required],
-      'nombreActor': [{ value: '', disabled: true }, this.validarNombrePais],
-      'apellidoActor': [{ value: '', disabled: true }, this.validarNombrePais],
-      'emailActor': [{ value: '', disabled: true }, this.validarNombrePais],
-      'paisActor': [{ value: '', disabled: true }, this.validarNombrePais],
-
+      'tipo': ['', Validators.required]
     });
     console.log(this.forma);
   }
 
-  validarNombrePais(control: AbstractControl): null | object {
-    const nombre = <string>control.value;
-    console.log(nombre);
-    if (nombre != null) {
-      return {
-        valido: true
-      }
+  cargarActorSeleccionado(actor: Actor) {
+    // console.info(actor);
+
+    this.banderaActorSeleccionado = false;
+    if (this.listaActoresSeleccionados.includes(actor)) {
+      console.log("Actor ya incluido");
     }
     else {
-      return null;
+      this.listaActoresSeleccionados.push(actor);
+      // console.log(this.listaActoresSeleccionados);
     }
+
+    this.peliculaFuturaAlta.actores = this.listaActoresSeleccionados;
+    // console.log(this.listaActoresSeleccionados)
   }
 
-  cargarActorSeleccionado(actor: Actor) {
-    console.info(actor);
-
-    this.actorSeleccionado = actor;
+  eliminarActor(actor: Actor) {
+    this.listaActoresSeleccionados.splice(this.listaActoresSeleccionados.indexOf(actor), 1);
+    this.peliculaFuturaAlta.actores = this.listaActoresSeleccionados;
+    if(this.listaActoresSeleccionados.length == 0){
+      this.banderaActorSeleccionado = true;
+    }
   }
 
   nuevaImagen(event: any): void {
@@ -69,21 +76,16 @@ export class AltaPeliculasComponent implements OnInit {
   altaPelicula() {
     console.log(this.forma);
     console.log(this.imagen);
-    let nuevaPelicula: Pelicula = {
-      nombre: this.forma.controls['nombre'].value,
-      tipo: this.forma.controls['tipo'].value,
-      fechaEstreno: this.forma.controls['fecha'].value,
-      foto: this.imagen.name,
-      nombreActor: this.actorSeleccionado.nombre,
-      apellidoActor: this.actorSeleccionado.apellido,
-      emailActor: this.actorSeleccionado.email,
-      paisActor: this.actorSeleccionado.pais,
-      telefonoActor: this.actorSeleccionado.telefono,
-      cantidadDePublico: "0",
-    }
-    console.log(nuevaPelicula);
+    console.log("-------------");
+    this.peliculaFuturaAlta.nombre =this.forma.controls['nombre'].value;
+    this.peliculaFuturaAlta.tipo =this.forma.controls['tipo'].value;
+    this.peliculaFuturaAlta.fechaEstreno =this.forma.controls['fecha'].value;
+    this.peliculaFuturaAlta.foto = this.imagen.name;
+    this.peliculaFuturaAlta.cantidadDePublico = "0";
+    
+    console.log(this.peliculaFuturaAlta);
 
-    this._PeliService.subirImagen(this.imagen, nuevaPelicula);
+    this._PeliService.subirImagen(this.imagen, this.peliculaFuturaAlta);
     this._Mservice.mensajeExitoso('Pelicula dada de alta correctamente!');
     this.router.navigateByUrl("/Bienvenido");
   }
