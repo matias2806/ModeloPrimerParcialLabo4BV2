@@ -21,6 +21,7 @@ import { AltaActoresComponent } from './page/alta-actores/alta-actores.component
 import { TablaPaisesComponent } from './components/tabla-paises/tabla-paises.component';
 import { AltaPeliculasComponent } from './page/alta-peliculas/alta-peliculas.component';
 import { TablaActorComponent } from './components/tabla-actor/tabla-actor.component';
+import { ActorPeliculaComponent } from './page/actor-pelicula/actor-pelicula.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TablaActorComponent } from './components/tabla-actor/tabla-actor.compon
     AltaActoresComponent,
     TablaPaisesComponent,
     AltaPeliculasComponent,
-    TablaActorComponent
+    TablaActorComponent,
+    ActorPeliculaComponent
   ],
   imports: [
     BrowserModule,
