@@ -28,6 +28,11 @@
             <li class="nav-item active" *ngIf="authSvc.usuario.uid">
                 <a class="nav-link" [routerLink]="['/AltaRepartidor']">Alta Repartidor</a>
             </li>
+            <li class="nav-item active" *ngIf="authSvc.usuario.uid">
+                <a class="nav-link" [routerLink]="['/RepartidorDetalle']">Repartidor Detalle</a>
+            </li>
+
+            
         </ul>
         <ul class="navbar-nav mx-auto" *ngIf="user$ |async as user">
 

@@ -9,6 +9,7 @@ import { BienvenidaComponent } from './page/bienvenida/bienvenida.component';
 import { BienvenidosComponent } from './page/bienvenidos/bienvenidos.component';
 import { BusquedapeliculasComponent } from './page/busquedapeliculas/busquedapeliculas.component';
 import { LoginComponent } from './page/login/login.component';
+import { RepartidorDetalleComponent } from './page/repartidorDetalle/repartidor-detalle/repartidor-detalle.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/Busqueda', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'Bienvenida', component:  BienvenidaComponent},
   { path: 'LogIn', component:  LoginComponent},
   { path: 'AltaRepartidor', component:  AltaRepartidorComponent},
+  { path: 'RepartidorDetalle', component:  RepartidorDetalleComponent},
 ];
 
 @NgModule({

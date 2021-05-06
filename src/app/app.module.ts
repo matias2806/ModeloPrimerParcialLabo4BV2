@@ -28,6 +28,10 @@ import { InformacionActorComponent } from './components/informacion-actor/inform
 import { BienvenidaComponent } from './page/bienvenida/bienvenida.component';
 import { LoginComponent } from './page/login/login.component';
 import { AltaRepartidorComponent } from './page/alta-repartidor/alta-repartidor.component';
+import { RepartidorDetalleComponent } from './page/repartidorDetalle/repartidor-detalle/repartidor-detalle.component';
+import { TablaRepartidorComponent } from './components/tabla-repartidor/tabla-repartidor.component';
+import { InformacionRepartidorComponent } from './components/informacion-repartidor/informacion-repartidor.component';
+import { NacionalidadRepartidorComponent } from './components/nacionalidad-repartidor/nacionalidad-repartidor.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,11 @@ import { AltaRepartidorComponent } from './page/alta-repartidor/alta-repartidor.
     InformacionActorComponent,
     BienvenidaComponent,
     LoginComponent,
-    AltaRepartidorComponent
+    AltaRepartidorComponent,
+    RepartidorDetalleComponent,
+    TablaRepartidorComponent,
+    InformacionRepartidorComponent,
+    NacionalidadRepartidorComponent
   ],
   imports: [
     BrowserModule,
