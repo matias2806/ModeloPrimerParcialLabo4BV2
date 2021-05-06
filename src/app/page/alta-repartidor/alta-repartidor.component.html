@@ -1,0 +1,91 @@
+<app-nav-bar></app-nav-bar>
+<br><br>
+
+<div class="container mt-5">
+    <main>
+        <div class="row g-5">
+            <div>
+                <button class="btn btn-secondary" (click)="cambioDeRegion()">Cambiar De Region Paises</button>
+            </div>
+            <div class="col-md-5 col-lg-4 order-md-last">
+                <app-tabla-paises [listadoPaises]='listadoPaises'
+                    (eventoPaisSeleccionado)="cargarPaisSeleccionado($event)"></app-tabla-paises>
+            </div>
+
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Alta Repartidor</h4>
+                <form [formGroup]="forma" class="needs-validation" (ngSubmit)="altaRepartidor()">
+                    <div class="row g-3">
+                        <div class="col-sm-12">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder=""
+                                formControlName="nombre">
+                            <small class="invalido"
+                                *ngIf="forma.get('nombre')?.errors?.required && forma.get('nombre')?.touched">(!)
+                                El nombre del repartidor es requerido</small>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="dni" class="form-label">DNI</label>
+                            <input type="text" name="dni" class="form-control" id="dni" placeholder=""
+                                formControlName="dni">
+                            <small class="invalid"
+                                *ngIf="forma.get('dni')?.errors?.required && forma.get('dni')?.touched">(!)
+                                El dni del repartidor es requerido</small>
+                            <small class="invalido"
+                                *ngIf="forma.get('dni')?.errors?.min || forma.get('dni')?.errors?.max && forma.get('dni')?.touched">(!)
+                                El dni es incorrecto</small>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="text" name="edad" class="form-control" id="edad" placeholder=""
+                                formControlName="edad">
+                            <small class="invalid"
+                                *ngIf="forma.get('edad')?.errors?.required && forma.get('edad')?.touched">(!)
+                                La edad del repartidor es requerido</small>
+                            <small class="invalido"
+                                *ngIf="forma.get('edad')?.errors?.min || forma.get('edad')?.errors?.max && forma.get('edad')?.touched">(!)
+                                La edad es incorrecta</small>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <label for="capacidad" class="form-label">Capacidad de transporte</label>
+                            <input type="text" name="capacidad" class="form-control" id="capacidad" placeholder=""
+                                formControlName="capacidad">
+                            <small class="invalid"
+                                *ngIf="forma.get('capacidad')?.errors?.required && forma.get('capacidad')?.touched">(!)
+                                La capacidad del repartidor es requerido</small>
+                            <small class="invalido"
+                                *ngIf="forma.get('capacidad')?.errors?.min || forma.get('capacidad')?.errors?.max && forma.get('capacidad')?.touched">(!)
+                                La capacidad es incorrecta</small>
+                        </div>
+
+                        <div class="col-md-12 ">
+                            <label for="tieneUnidad" class="form-label">Unidad Propia</label>
+                            <select class="form-select" id="tieneUnidad" required formControlName="tieneUnidad">
+                                <option value="true">Si tengo Unidad</option>
+                                <option value="false">No no tengo</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="nacionalidad">Nombre del pais</label>
+                            <input name="nacionalidad" name="nacionalidad" for="nacionalidad" class="form-control"
+                                formControlName="nacionalidad" value={{paisSeleccionado?.name}}>
+                            <small class="invalido" *ngIf="forma.get('nacionalidad')?.errors?.nacionalidad">(!) El
+                                pais del actor es requerido</small>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit"
+                            [disabled]="forma.invalid || !paisSeleccionado">Alta de Repartidor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2021 Matias Ezequiel Palmieri</p>
+    </footer>
+</div>

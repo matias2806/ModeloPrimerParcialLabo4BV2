@@ -20,6 +20,10 @@ export class PaisService {
     return this.http.get("https://restcountries.eu/rest/v2/all");
   }
 
+  todosDeUnaRegion(region:string) {
+    return this.http.get(`https://restcountries.eu/rest/v2/region/${region}`);
+  }
+  
   conseguirPorNombre(nombre:string){
     // console.log(`https://restcountries.eu/rest/v2/name/${nombre}?fullText=true`);
     return this.http.get(`https://restcountries.eu/rest/v2/name/${nombre}?fullText=true`);
