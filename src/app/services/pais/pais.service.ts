@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PaisService {
-  private paisActual?:string;
+  private paisActual?: string;
 
   constructor(private http: HttpClient) { }
 
@@ -16,11 +16,17 @@ export class PaisService {
     return this.http.get(`${environment.baseUrlApi}`).toPromise()
   }
 
-  todos(){
+  todos() {
     return this.http.get("https://restcountries.eu/rest/v2/all");
-   }
+  }
 
-  async conseguirId(id:string){
+  conseguirPorNombre(nombre:string){
+    // console.log(`https://restcountries.eu/rest/v2/name/${nombre}?fullText=true`);
+    return this.http.get(`https://restcountries.eu/rest/v2/name/${nombre}?fullText=true`);
+  }
+  
+
+  async conseguirId(id: string) {
     return this.http.get(`${environment.baseUrlApi}${id}`).toPromise()
   }
 

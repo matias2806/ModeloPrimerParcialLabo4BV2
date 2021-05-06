@@ -44,7 +44,7 @@ export class PeliculasService {
 
   guardarPeliculaConFoto(pelicula: Pelicula, nombreURL :any){
     pelicula.URLfoto=nombreURL;
-    console.log(pelicula);
+    // console.log(pelicula);
     return this.peliculasColecction.add(JSON.parse(JSON.stringify(pelicula)));
   }
 
@@ -55,7 +55,7 @@ export class PeliculasService {
     task.snapshotChanges().pipe(finalize(()=>{
       fileRef.getDownloadURL().subscribe(urlImagen =>{
         this.dowloadURL = urlImagen;
-        console.log('URL_IMAGEN', urlImagen);
+        // console.log('URL_IMAGEN', urlImagen);
         this.guardarPeliculaConFoto(pelicula, urlImagen);
       })
     })).subscribe();

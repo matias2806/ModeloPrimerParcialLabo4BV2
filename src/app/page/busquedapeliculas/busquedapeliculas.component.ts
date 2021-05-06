@@ -23,7 +23,6 @@ export class BusquedapeliculasComponent implements OnInit {
 
   cargarPeliculaSeleccionada(pelicula: Pelicula){
     this.peliculaSeleccionada = pelicula;
-    console.log("DSA"+this.peliculaSeleccionada);
     
   }
 

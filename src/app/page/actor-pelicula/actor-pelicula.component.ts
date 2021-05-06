@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActorService } from 'src/app/services/actor/actor.service';
-import { MensajesService } from 'src/app/services/mensajes/mensajes.service';
+import { PaisService } from 'src/app/services/pais/pais.service';
 import { Actor } from '../../clases/actor/actor';
-import { Pelicula } from '../../clases/pelicula/pelicula';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-actor-pelicula',
@@ -14,24 +12,26 @@ export class ActorPeliculaComponent implements OnInit {
 
   //listaCompleta
   listadoActores!: Actor[];
+  paisCompleto: any;
   //actor
   actorSeleccionado: Actor;
-  constructor(private _Aservice: ActorService,) {
+  constructor(private _Aservice: ActorService, private _Pservice: PaisService) {
 
   }
 
   ngOnInit(): void {
     this._Aservice.traerTodos().subscribe((actores: Actor[]) => {
-      console.log(actores);
+      //console.log(actores);
       this.listadoActores = actores;
     });
   }
 
   cargarActorSeleccionado(actor: Actor) {
-    // console.info(actor);
-    this.actorSeleccionado=actor;
-    console.log(this.actorSeleccionado);
-
+    this.actorSeleccionado = actor;
+    this._Pservice.conseguirPorNombre(this.actorSeleccionado.pais).subscribe(pais => {
+      this.paisCompleto = pais;
+      console.log(this.paisCompleto);
+    });
   }
 
 }

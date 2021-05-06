@@ -19,7 +19,7 @@ export class AltaPeliculaComponent implements OnInit {
 
   guardarNuevaPelicula(){
     this.EventoCreacionNuevaPelicula.emit(this.peliculaNueva)
-    console.log(this.peliculaNueva);
+    // console.log(this.peliculaNueva);
     this.peliculaNueva = null;
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Pelicula } from 'src/app/clases/pelicula/pelicula';
 import { PeliculasService } from 'src/app/services/peliculas/peliculas.service';
 import { Actor } from '../../clases/actor/actor';
+
 @Component({
   selector: 'app-listado-peliculas',
   templateUrl: './listado-peliculas.component.html',
@@ -17,7 +18,7 @@ export class ListadoPeliculasComponent implements OnInit {
     this._Pservice.traerTodos().subscribe(peli => {
 
       this.listaPeliculas = peli;
-      console.log(this.listaPeliculas);
+      // console.log(this.listaPeliculas);
     })
   }
 
@@ -37,7 +38,7 @@ export class ListadoPeliculasComponent implements OnInit {
         });
       });
     }
-    console.log(this.peliculasEnLasQueParticipo);
+    // console.log(this.peliculasEnLasQueParticipo);
     return aux;
   }
 

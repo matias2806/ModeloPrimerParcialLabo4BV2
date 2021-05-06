@@ -31,7 +31,7 @@ export class AltaPeliculasComponent implements OnInit {
 
   ngOnInit(): void {
     this._Aservice.traerTodos().subscribe((actores: Actor[]) => {
-      console.log(actores);
+      //console.log(actores);
       this.listadoActores = actores;
     });
 
@@ -41,7 +41,7 @@ export class AltaPeliculasComponent implements OnInit {
       'foto': ['', Validators.required],
       'tipo': ['', Validators.required]
     });
-    console.log(this.forma);
+    //console.log(this.forma);
   }
 
   cargarActorSeleccionado(actor: Actor) {
@@ -49,7 +49,7 @@ export class AltaPeliculasComponent implements OnInit {
 
     this.banderaActorSeleccionado = false;
     if (this.listaActoresSeleccionados.includes(actor)) {
-      console.log("Actor ya incluido");
+      //console.log("Actor ya incluido");
     }
     else {
       this.listaActoresSeleccionados.push(actor);
@@ -70,20 +70,20 @@ export class AltaPeliculasComponent implements OnInit {
 
   nuevaImagen(event: any): void {
     this.imagen = event.target.files[0];
-    console.log(this.imagen);
+    //console.log(this.imagen);
   }
 
   altaPelicula() {
-    console.log(this.forma);
-    console.log(this.imagen);
-    console.log("-------------");
+    // console.log(this.forma);
+    // console.log(this.imagen);
+    // console.log("-------------");
     this.peliculaFuturaAlta.nombre =this.forma.controls['nombre'].value;
     this.peliculaFuturaAlta.tipo =this.forma.controls['tipo'].value;
     this.peliculaFuturaAlta.fechaEstreno =this.forma.controls['fecha'].value;
     this.peliculaFuturaAlta.foto = this.imagen.name;
     this.peliculaFuturaAlta.cantidadDePublico = "0";
     
-    console.log(this.peliculaFuturaAlta);
+    // console.log(this.peliculaFuturaAlta);
 
     this._PeliService.subirImagen(this.imagen, this.peliculaFuturaAlta);
     this._Mservice.mensajeExitoso('Pelicula dada de alta correctamente!');

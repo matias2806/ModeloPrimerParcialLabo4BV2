@@ -23,6 +23,8 @@ import { AltaPeliculasComponent } from './page/alta-peliculas/alta-peliculas.com
 import { TablaActorComponent } from './components/tabla-actor/tabla-actor.component';
 import { ActorPeliculaComponent } from './page/actor-pelicula/actor-pelicula.component';
 import { ListadoPeliculasComponent } from './components/listado-peliculas/listado-peliculas.component';
+import { NacionalidadActorComponent } from './components/nacionalidad-actor/nacionalidad-actor.component';
+import { InformacionActorComponent } from './components/informacion-actor/informacion-actor.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ListadoPeliculasComponent } from './components/listado-peliculas/listad
     AltaPeliculasComponent,
     TablaActorComponent,
     ActorPeliculaComponent,
-    ListadoPeliculasComponent
+    ListadoPeliculasComponent,
+    NacionalidadActorComponent,
+    InformacionActorComponent
   ],
   imports: [
     BrowserModule,

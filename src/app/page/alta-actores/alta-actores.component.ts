@@ -30,7 +30,7 @@ export class AltaActoresComponent implements OnInit {
     this._Pservice.todos().subscribe((paises) => {
 
       this.listadoPaises = JSON.parse(JSON.stringify(paises));
-      console.log(paises);
+      //console.log(paises);
     });
 
     this.forma = this.fb.group({
@@ -40,14 +40,14 @@ export class AltaActoresComponent implements OnInit {
       'email': ['', [Validators.required, Validators.email]],
       'nacionalidad': [{ value: '', disabled: true }, this.validarNombrePais],
     });
-    console.log(this.forma);
+    //console.log(this.forma);
   }
 
   validarNombrePais(control: AbstractControl): null | object {
 
 
     const nombre = <string>control.value;
-    console.log(nombre);
+    //console.log(nombre);
     if (nombre != null) {
       return {
         valido: true
