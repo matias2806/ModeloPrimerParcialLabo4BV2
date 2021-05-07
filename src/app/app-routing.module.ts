@@ -9,6 +9,7 @@ import { BienvenidaComponent } from './page/bienvenida/bienvenida.component';
 import { BienvenidosComponent } from './page/bienvenidos/bienvenidos.component';
 import { BusquedapeliculasComponent } from './page/busquedapeliculas/busquedapeliculas.component';
 import { LoginComponent } from './page/login/login.component';
+import { PizzasComponent } from './page/pizzas/pizzas/pizzas.component';
 import { RepartidorDetalleComponent } from './page/repartidorDetalle/repartidor-detalle/repartidor-detalle.component';
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'LogIn', component:  LoginComponent},
   { path: 'AltaRepartidor', component:  AltaRepartidorComponent},
   { path: 'RepartidorDetalle', component:  RepartidorDetalleComponent},
+  { path: 'Pizzas', component:  PizzasComponent},
 ];
 
 @NgModule({

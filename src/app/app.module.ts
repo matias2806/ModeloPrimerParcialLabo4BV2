@@ -32,6 +32,8 @@ import { RepartidorDetalleComponent } from './page/repartidorDetalle/repartidor-
 import { TablaRepartidorComponent } from './components/tabla-repartidor/tabla-repartidor.component';
 import { InformacionRepartidorComponent } from './components/informacion-repartidor/informacion-repartidor.component';
 import { NacionalidadRepartidorComponent } from './components/nacionalidad-repartidor/nacionalidad-repartidor.component';
+import { PizzasComponent } from './page/pizzas/pizzas/pizzas.component';
+import { PizzaAltaComponent } from './components/pizza-alta/pizza-alta.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { NacionalidadRepartidorComponent } from './components/nacionalidad-repar
     RepartidorDetalleComponent,
     TablaRepartidorComponent,
     InformacionRepartidorComponent,
-    NacionalidadRepartidorComponent
+    NacionalidadRepartidorComponent,
+    PizzasComponent,
+    PizzaAltaComponent
   ],
   imports: [
     BrowserModule,

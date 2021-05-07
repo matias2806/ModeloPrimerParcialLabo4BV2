@@ -1,0 +1,49 @@
+<div class="col-md-7 col-lg-8">
+    <form [formGroup]="forma" class="needs-validation" (ngSubmit)="altaPizza()">
+        <div class="row g-3">
+            <div class="col-sm-12">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder=""
+                    formControlName="nombre">
+                <small class="invalido"
+                    *ngIf="forma.get('nombre')?.errors?.required && forma.get('nombre')?.touched">(!)
+                    El nombre del repartidor es requerido</small>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="ingredientes" class="form-label">Ingredientes</label>
+                <input type="text" name="ingredientes" class="form-control" id="ingredientes" placeholder=""
+                    formControlName="ingredientes">
+                <small class="invalido"
+                    *ngIf="forma.get('ingredientes')?.errors?.required && forma.get('ingredientes')?.touched">(!)
+                    Los ingredientes de la pizza son requeridos</small>
+
+            </div>
+
+            <div class="col-sm-12">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="text" name="precio" class="form-control" id="precio" placeholder=""
+                    formControlName="precio">
+                <small class="invalido"
+                    *ngIf="forma.get('precio')?.errors?.required && forma.get('precio')?.touched">(!)
+                    El precio de la pizza es requeridos</small>
+                <small class="invalido"
+                    *ngIf="forma.get('precio')?.errors?.min || forma.get('precio')?.errors?.max && forma.get('precio')?.touched">(!)
+                    El precio es incorrecta</small>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="peso" class="form-label">Peso</label>
+                <input type="text" name="peso" class="form-control" id="peso" placeholder="" formControlName="peso">
+                <small class="invalido" *ngIf="forma.get('peso')?.errors?.required && forma.get('peso')?.touched">(!)
+                    El peso de la pizza es requerido</small>
+                <small class="invalido"
+                    *ngIf="forma.get('precio')?.errors?.min || forma.get('precio')?.errors?.max && forma.get('precio')?.touched">(!)
+                    El peso es incorrecta</small>
+            </div>
+
+            <!-- <button (click)="verForma()">aa</button> -->
+            <button class="btn btn-primary btn-lg btn-block" type="submit" >Alta de Pizza</button>
+        </div>
+    </form>
+</div>
