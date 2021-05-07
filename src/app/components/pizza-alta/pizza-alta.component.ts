@@ -28,6 +28,11 @@ export class PizzaAltaComponent implements OnInit {
     });
   }
 
+  enviarEventoPizzaCargada(pizza:Pizza){
+    console.info(pizza);
+    this.eventoPizzaAlta.emit(pizza);
+  }
+
   // verForma(){
   //   console.log(this.forma);
   // }

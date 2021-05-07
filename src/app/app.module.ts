@@ -34,6 +34,7 @@ import { InformacionRepartidorComponent } from './components/informacion-reparti
 import { NacionalidadRepartidorComponent } from './components/nacionalidad-repartidor/nacionalidad-repartidor.component';
 import { PizzasComponent } from './page/pizzas/pizzas/pizzas.component';
 import { PizzaAltaComponent } from './components/pizza-alta/pizza-alta.component';
+import { TablaPizzaComponent } from './components/tabla-pizza/tabla-pizza.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PizzaAltaComponent } from './components/pizza-alta/pizza-alta.component
     InformacionRepartidorComponent,
     NacionalidadRepartidorComponent,
     PizzasComponent,
-    PizzaAltaComponent
+    PizzaAltaComponent,
+    TablaPizzaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-primary">Tabla Pizzas</span>
+    <span class="badge bg-primary rounded-pill" *ngIf="listadoPizzas != null">{{listadoPizzas.length}}</span>
+</h4>
+<ul class="list-group mb-3" class="tamanioBarraPaises">
+    <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let pizza of listadoPizzas let i=index" (click)="enviarEventoPaisSeleccionado(pais)">
+        <div>
+            <h6 class="my-0">{{pizza.nombre}}</h6>
+            <small class="text-muted">{{pizza.precio}}</small>
+        </div>
+    </li>
+</ul>
